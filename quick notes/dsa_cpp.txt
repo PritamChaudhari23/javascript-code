@@ -1,0 +1,2667 @@
+================================================================================
+                              ARRAYS (ARRAYS)
+================================================================================
+
+
+--------- 1. BASIC ARRAY OPERATIONS ---------
+
+    1.1. Create and Display Array
+    ----
+    #include<iostream>
+    using namespace std;
+    int main()
+    {
+        int n, i;
+        int arr[n];
+        cout << "Enter the number of elements in the array" << endl;
+        cin >> n;
+
+        for (i = 0; i < n; i++)
+        {
+            cout << "Enter array element:" << endl;
+            cin >> arr[i];
+        }
+
+        cout << "The array elements are: [ ";
+
+        for(i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        return 0;
+    }
+
+
+    1.2. Display Pre-initialized Array
+    ----
+    #include<iostream>
+    using namespace std;
+    int main()
+    {
+        int i;
+        int arr[7] = {16, 24, 8, 60, 35, 44, 51};
+
+        cout << "The array elements are: [ ";
+
+        for (i = 0; i < 7; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        return 0;
+    }
+
+
+--------- 2. ARRAY MANIPULATION OPERATIONS ---------
+
+    2.1. Insert Element
+    ----
+    #include<iostream>
+    using namespace std;
+
+    void Insert(int arr[], int n)
+    {
+        int i, element, position;
+        cout << "Enter the element : ";
+        cin >> element;
+        cout << "Enter position : ";
+        cin >> position;
+
+        for (i = n - 1; i >= position; i--)
+        {
+            arr[i + 1] = arr[i];
+        }
+
+        arr[position] = element;
+
+        cout << "The new array is: [ ";
+
+        for (i = 0; i < n + 1; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    2.2. Delete Element
+    ----
+    void Delete(int arr[], int n)
+    {
+        int position, i;
+        cout << "Enter position : ";
+        cin >> position;
+
+        for (i = position; i < n; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+
+        cout << "The new array is: [ ";
+
+        for (i = 0; i < n - 1; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+--------- 3. ARRAY REVERSAL OPERATIONS ---------
+
+    3.1. Reverse Display (Without Modifying Array)
+    ----
+    void ReverseDisplay(int arr[], int n)
+    {
+        cout << "The reversed display of elements is : [";
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[n - 1 - i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    3.2. Reverse Elements (Modify Array)
+    ----
+    void Reverse(int arr[], int n)
+    {
+        int i = 0;
+        int j = n - 1;
+        int temp;
+        while (i < j)
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+
+        cout << "The reversed array elements are: [ ";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    3.3. Complete Reverse Program
+    ----
+    #include<iostream>
+    using namespace std;
+
+    void Reverse(int arr[], int n)
+    {
+        int i = 0;
+        int j = n - 1;
+        int temp;
+        while (i < j)
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+
+    void PrintReverseArray(int arr[], int n)
+    {
+        cout << "The reversed array elements are: [ ";
+
+        for (int i = 0; i < 7; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    int main()
+    {
+        int i;
+        int arr[] = {16, 24, 8, 60, 35, 44, 51};
+
+        int n = sizeof(arr) / sizeof(arr[0]);
+
+        cout << "The array elements are: [ ";
+
+        for (i = 0; i < 7; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        Reverse(arr, n);
+        PrintReverseArray(arr, n);
+        return 0;
+    }
+
+
+--------- 4. ARRAY ANALYSIS OPERATIONS ---------
+
+    4.1. Find Duplicates
+    ----
+    int Duplicates(int arr[], int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for(int j = i + 1; j < n; j++)
+            {
+                if (arr[i] == arr[j])
+                    return arr[i];
+            }
+            return -1;
+        }
+    }
+
+
+    4.2. Swap Elements
+    ----
+    void Swap(int arr[], int n)
+    {
+        int i1, i2, temp;
+        cout << "Enter the index of first element : ";
+        cin >> i1;
+        cout << "Enter the index of second element : ";
+        cin >> i2;
+
+        temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
+
+        cout << "Array after swapping elements is : [";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    4.3. Calculate Average
+    ----
+    int Average(int arr[], int n)
+    {
+        int sum = 0;
+        for(int i = 0; i < n; i++)
+        {
+            sum = sum + arr[i];
+        }
+
+        int avg = sum / n;
+        return avg;
+    }
+
+
+    4.4. Find Minimum Element
+    ----
+    void Minimum(int a[], int n)
+    {
+        int min = a[0];
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] < min)
+                min = a[i];
+        }
+        cout << "The minimum element is : " << min << endl;
+    }
+
+
+    4.5. Find Maximum Element
+    ----
+    void Maximum(int a[], int n)
+    {
+        int max = a[0];
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] > max)
+                max = a[i];
+        }
+        cout << "The maximum element is : " << max << endl;
+    }
+
+
+--------- 5. COMPLETE ARRAY OPERATIONS PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    void Insert(int arr[], int n)
+    {
+        int i, element, position;
+        cout << "Enter the element : ";
+        cin >> element;
+        cout << "Enter position : ";
+        cin >> position;
+
+        for (i = n - 1; i >= position; i--)
+        {
+            arr[i + 1] = arr[i];
+        }
+
+        arr[position] = element;
+
+        cout << "The new array is: [ ";
+
+        for (i = 0; i < n + 1; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    void Delete(int arr[], int n)
+    {
+        int position, i;
+        cout << "Enter position : ";
+        cin >> position;
+
+        for (i = position; i < n; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+
+        cout << "The new array is: [ ";
+
+        for (i = 0; i < n - 1; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    void ReverseDisplay(int arr[], int n)
+    {
+        cout << "The reversed display of elements is : [";
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[n - 1 - i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    void Reverse(int arr[], int n)
+    {
+        int i = 0;
+        int j = n - 1;
+        int temp;
+        while (i < j)
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+
+        cout << "The reversed array elements are: [ ";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    int Duplicates(int arr[], int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for(int j = i + 1; j < n; j++)
+            {
+                if (arr[i] == arr[j])
+                    return arr[i];
+            }
+            return -1;
+        }
+    }
+
+
+    void Swap(int arr[], int n)
+    {
+        int i1, i2, temp;
+        cout << "Enter the index of first element : ";
+        cin >> i1;
+        cout << "Enter the index of second element : ";
+        cin >> i2;
+
+        temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
+
+        cout << "Array after swapping elements is : [";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    int Average(int arr[], int n)
+    {
+        int sum = 0;
+        for(int i = 0; i < n; i++)
+        {
+            sum = sum + arr[i];
+        }
+
+        int avg = sum / n;
+        return avg;
+    }
+
+
+    void Minimum(int a[], int n)
+    {
+        int min = a[0];
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] < min)
+                min = a[i];
+        }
+        cout << "The minimum element is : " << min << endl;
+    }
+
+
+    void Maximum(int a[], int n)
+    {
+        int max = a[0];
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] > max)
+                max = a[i];
+        }
+        cout << "The maximum element is : " << max << endl;
+    }
+
+
+    void PrintSortedArray(int arr[], int n)
+    {
+        cout << "The sorted array is: [ ";
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << "]" << endl;
+    }
+
+
+    int main()
+    {
+        int i, n;
+
+        cout << "Enter the size of array : ";
+        cin >> n;
+        int arr[n];
+
+        for (i = 0; i < n; i++)
+        {
+            cout << "Enter array element: ";
+            cin >> arr[i];
+        }
+
+        cout << "The array elements are: [ ";
+
+        for(i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        int choice;
+        while (1)
+        {
+            cout << "----------------------------" << endl;
+            cout << "PROGRAM FOR ARRAY OPERATIONS" << endl;
+            cout << "----------------------------" << endl;
+            cout << "1. Insert an element" << endl;
+            cout << "2. Delete an element" << endl;
+            cout << "3. Reverse display" << endl;
+            cout << "4. Reverse the array elements" << endl;
+            cout << "5. Find out duplicates in array" << endl;
+            cout << "6. Swap the array elements" << endl;
+            cout << "7. Number of elements in the array" << endl;
+            cout << "8. Average of array elements" << endl;
+            cout << "9. Find minimum element" << endl;
+            cout << "10.Find maximum element" << endl;
+            cout << "11.Exit" << endl;
+            cout << endl;
+            cout << "Enter your choice: ";
+
+            cin >> choice;
+
+            switch (choice)
+            {
+                case 1:
+                    Insert(arr, n);
+                    break;
+
+                case 2:
+                    Delete(arr, n);
+                    break;
+
+                case 3:
+                    ReverseDisplay(arr, n);
+                    break;
+
+                case 4:
+                    Reverse(arr, n);
+                    break;
+
+                case 5:
+                {
+                    int dup;
+                    dup = Duplicates(arr, n);
+                    dup == -1 ? cout << "No duplicates found!" << endl : cout << "The duplicate in array is : " << dup << endl;
+                    break;
+                }
+
+                case 6:
+                    Swap(arr, n);
+                    break;
+
+                case 7:
+                    n = sizeof(arr) / sizeof(arr[0]);
+                    cout << "Currant array size is :" << n << " elements" << endl;
+                    break;
+
+                case 8:
+                {
+                    int avg;
+                    avg = Average(arr, n);
+                    cout << "The average of all elements is : " << avg << endl;
+                    break;
+                }
+
+                case 9:
+                    Minimum(arr, n);
+                    break;
+
+                case 10:
+                    Maximum(arr, n);
+                    break;
+
+                case 11:
+                    exit(0);
+                    break;
+
+                default:
+                    cout << "Invalid choice" << endl;
+                    cout << endl;
+                    break;
+            }
+        }
+
+        return 0;
+    }
+
+
+================================================================================
+                           ARRAY SEARCHING
+================================================================================
+
+
+--------- 1. LINEAR SEARCH ---------
+
+    1.1. Linear Search (Iterative)
+    ----
+    int Linear(int a[], int n, int number)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] == number)
+                return i;
+        }
+        return -1;
+    }
+
+
+    1.2. Linear Search (Recursive)
+    ----
+    int LinearRecursive(int a[], int index, int number)
+    {
+        if (index < 0)
+            return -1;
+
+        if (a[index] == number)
+            return index;
+
+        else
+            return LinearRecursive(a, index - 1, number);
+    }
+
+
+--------- 2. BINARY SEARCH ---------
+
+    Note: Binary search algorithm works on sorted arrays only
+
+    2.1. Binary Search (Iterative)
+    ----
+    void Binary(int a[], int n, int number)
+    {
+        int first = 0;
+        int last = n - 1;
+        int mid;
+
+        while (first <= last)
+        {
+            mid = (first + last) / 2;
+
+            if (number < a[mid])
+            {
+                last = mid - 1;
+            }
+
+            else if (number > a[mid])
+            {
+                first = mid + 1;
+            }
+
+            else if (number == a[mid])
+            {
+                cout << "Element found at index : " << mid << endl;
+                break;
+            }
+
+            if (first > last)
+                cout << "Element not found!!!" << endl;
+        }
+    }
+
+
+    2.2. Binary Search (Recursive)
+    ----
+    int BinaryRecursive(int a[], int first, int last, int number)
+    {
+        if (first > last)
+            return -1;
+
+        int mid = (first + last) / 2;
+
+        if (number == a[mid])
+            return mid;
+
+        else if (number < a[mid])
+            return BinaryRecursive(a, first, mid - 1, number);
+
+        else    // (number > a[mid])
+            return BinaryRecursive(a, mid + 1, last, number);
+    }
+
+
+--------- 3. COMPLETE ARRAY SEARCH PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    int Linear(int a[], int n, int number)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] == number)
+                return i;
+        }
+        return -1;
+    }
+
+
+    int LinearRecursive(int a[], int index, int number)
+    {
+        if (index < 0)
+            return -1;
+
+        if (a[index] == number)
+            return index;
+
+        else
+            return LinearRecursive(a, index - 1, number);
+    }
+
+
+    void Binary(int a[], int n, int number)
+    {
+        int first = 0;
+        int last = n - 1;
+        int mid;
+
+        while (first <= last)
+        {
+            mid = (first + last) / 2;
+
+            if (number < a[mid])
+            {
+                last = mid - 1;
+            }
+
+            else if (number > a[mid])
+            {
+                first = mid + 1;
+            }
+
+            else if (number == a[mid])
+            {
+                cout << "Element found at index : " << mid << endl;
+                break;
+            }
+
+            if (first > last)
+                cout << "Element not found!!!" << endl;
+        }
+    }
+
+
+    int BinaryRecursive(int a[], int first, int last, int number)
+    {
+        if (first > last)
+            return -1;
+
+        int mid = (first + last) / 2;
+
+        if (number == a[mid])
+            return mid;
+
+        else if (number < a[mid])
+            return BinaryRecursive(a, first, mid - 1, number);
+
+        else
+            return BinaryRecursive(a, mid + 1, last, number);
+    }
+
+
+    int main()
+    {
+        int i, n;
+
+        cout << "Enter the size of array : ";
+        cin >> n;
+        int a[n];
+
+        cout << "Enter array elements (enter sorted for binary search):" << endl;
+
+        for (i = 0; i < n; i++)
+        {
+            cin >> a[i];
+        }
+
+        cout << "The array elements are: [ ";
+
+        for(i = 0; i < n; i++)
+        {
+            cout << a[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        int choice, number, index;
+
+        while(1)
+        {
+            cout << "----------------------------" << endl;
+            cout << "PROGRAM FOR ARRAY SEARCH" << endl;
+            cout << "----------------------------" << endl;
+            cout << "1. Linear search (iterative)" << endl;
+            cout << "2. Linear search (recursive)" << endl;
+            cout << "3. Binary search (iterative)" << endl;
+            cout << "4. Binary search (recursive)" << endl;
+            cout << "5. Exit" << endl;
+            cout << endl;
+            cout << "Enter your choice: ";
+
+            cin >> choice;
+
+            switch (choice)
+            {
+                case 1:
+                    cout << "Enter the number you want to search: ";
+                    cin >> number;
+                    index = Linear(a, n, number);
+                    (index == -1) ? cout << "Element not found" << endl : cout << "Element found at index " << index << endl;
+                    break;
+
+                case 2:
+                    cout << "Enter the number you want to search: ";
+                    cin >> number;
+                    index = LinearRecursive(a, n, number);
+                    (index == -1) ? cout << "Element not found" << endl : cout << "Element found at index " << index << endl;
+                    break;
+
+                case 3:
+                    cout << "Enter the number you want to search: ";
+                    cin >> number;
+                    Binary(a, n, number);
+                    break;
+
+                case 4:
+                    cout << "Enter the number you want to search: ";
+                    cin >> number;
+                    index = BinaryRecursive(a, 0, n - 1, number);
+                    (index == -1) ? cout << "Element not found" << endl : cout << "Element found at index " << index << endl;
+                    break;
+
+                case 5:
+                    exit(0);
+
+                default:
+                    cout << "Invalid choice" << endl;
+                    cout << endl;
+                    break;
+            }
+        }
+
+        return 0;
+    }
+
+
+--------- 4. SIMPLE BINARY SEARCH PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    void Binary(int a[], int n, int number)
+    {
+        int first = 0;
+        int last = n - 1;
+        int mid;
+
+        while (first <= last)
+        {
+            mid = (first + last) / 2;
+
+            if (number < a[mid])
+            {
+                last = mid - 1;
+            }
+
+            else if (number > a[mid])
+            {
+                first = mid + 1;
+            }
+
+            else if (number == a[mid])
+            {
+                cout << "Element found at index " << mid + 1 << endl;
+            }
+
+            else
+            {
+                cout << "Element not found..." << endl;
+            }
+        }
+    }
+
+    int main()
+    {
+        int i, number;
+        int a[] = {8, 15, 28, 36, 45, 54, 61};
+
+        int n = sizeof(a) / sizeof(a[0]);
+
+        cout << "The array elements are: [ ";
+
+        for (i = 0; i < 7; i++)
+        {
+            cout << a[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        cout << "Enter the number you want to search: ";
+        cin >> number;
+
+        Binary(a, n, number);
+
+        return 0;
+    }
+
+
+================================================================================
+                           ARRAY SORTING
+================================================================================
+
+
+--------- 1. BUBBLE SORT ---------
+
+    void Bubble(int arr[], int n)
+    {
+        int i, j;
+        for (i = 0; i < n - 1; i++)
+        {
+            for (j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    int temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+--------- 2. INSERTION SORT ---------
+
+    void Insertion(int arr[], int n)
+    {
+        int i, j, key;
+        for (i = 1; i < n; i++)
+        {
+            key = arr[i];
+            j = i - 1;
+            while (j >= 0 && arr[j] > key)
+            {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+
+--------- 3. SELECTION SORT ---------
+
+    void Swap(int *a, int* b)
+    {
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+
+
+    void Selection(int arr[], int n)
+    {
+        int i, j, min_idx;
+        for (i = 0; i < n - 1; i++)
+        {
+            min_idx = i;
+
+            for(j = i + 1; j < n; j++)
+            {
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            }
+
+            Swap(&arr[min_idx], &arr[i]);
+        }
+    }
+
+
+--------- 4. MERGE SORT ---------
+
+    void Merge(int arr[], int low, int mid, int high)
+    {
+        int i, j, k;
+
+        int nL = mid - low + 1;
+        int nR = high - mid;
+
+        int left[nL], right[nR];
+
+        for(i = 0; i < nL; i++)
+        {
+            left[i] = arr[low + i];
+        }
+
+        for(j = 0; j < nR; j++)
+        {
+            right[j] = arr[mid + 1 + j];
+        }
+
+        i = 0;
+        j = 0;
+        k = low;
+
+        while (i < nL && j < nR)
+        {
+            if (left[i] <= right[j])
+            {
+                arr[k] = left[i];
+                i++;
+            }
+
+            else
+            {
+                arr[k] = right[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < nL)
+        {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+
+        while (j < nR)
+        {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+
+
+    void MergeSort(int arr[], int low, int high)
+    {
+        int mid;
+
+        if (low < high)
+        {
+            mid = (low + high) / 2;
+            MergeSort(arr, low, mid);
+            MergeSort(arr, mid + 1, high);
+            Merge(arr, low, mid, high);
+        }
+    }
+
+
+--------- 5. QUICK SORT ---------
+
+    void swap(int* a, int* b)
+    {
+        int t = *a;
+        *a = *b;
+        *b = t;
+    }
+
+
+    int Partition(int arr[], int first, int last)
+    {
+        int pivot = arr[last];
+        int j = first;
+
+        for(int i = first; i < last; i++)
+        {
+            if (arr[i] <= pivot)
+            {
+                swap(&arr[i], &arr[j]);
+                j++;
+            }
+        }
+
+        swap(&arr[j], &arr[last]);
+        return j;
+    }
+
+
+    void QuickSort(int arr[], int first, int last)
+    {
+        int pIndex;
+
+        if (first < last)
+        {
+            pIndex = Partition(arr, first, last);
+            QuickSort(arr, first, pIndex - 1);
+            QuickSort(arr, pIndex + 1, last);
+        }
+    }
+
+
+--------- 6. UTILITY FUNCTIONS ---------
+
+    void PrintSortedArray(int arr[], int n)
+    {
+        cout << "The sorted array is: [ ";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+--------- 7. COMPLETE ARRAY SORTING PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    void Bubble(int arr[], int n)
+    {
+        int i, j;
+        for (i = 0; i < n - 1; i++)
+        {
+            for (j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    int temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+    void Insertion(int arr[], int n)
+    {
+        int i, j, key;
+        for (i = 1; i < n; i++)
+        {
+            key = arr[i];
+            j = i - 1;
+            while (j >= 0 && arr[j] > key)
+            {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+
+    void Swap(int *a, int* b)
+    {
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+
+
+    void Selection(int arr[], int n)
+    {
+        int i, j, min_idx;
+        for (i = 0; i < n - 1; i++)
+        {
+            min_idx = i;
+
+            for(j = i + 1; j < n; j++)
+            {
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            }
+
+            Swap(&arr[min_idx], &arr[i]);
+        }
+    }
+
+
+    void Merge(int arr[], int low, int mid, int high)
+    {
+        int i, j, k;
+
+        int nL = mid - low + 1;
+        int nR = high - mid;
+
+        int left[nL], right[nR];
+
+        for(i = 0; i < nL; i++)
+        {
+            left[i] = arr[low + i];
+        }
+
+        for(j = 0; j < nR; j++)
+        {
+            right[j] = arr[mid + 1 + j];
+        }
+
+        i = 0;
+        j = 0;
+        k = low;
+
+        while (i < nL && j < nR)
+        {
+            if (left[i] <= right[j])
+            {
+                arr[k] = left[i];
+                i++;
+            }
+
+            else
+            {
+                arr[k] = right[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < nL)
+        {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+
+        while (j < nR)
+        {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+
+
+    void MergeSort(int arr[], int low, int high)
+    {
+        int mid;
+
+        if (low < high)
+        {
+            mid = (low + high) / 2;
+            MergeSort(arr, low, mid);
+            MergeSort(arr, mid + 1, high);
+            Merge(arr, low, mid, high);
+        }
+    }
+
+
+    void swap(int* a, int* b)
+    {
+        int t = *a;
+        *a = *b;
+        *b = t;
+    }
+
+
+    int Partition(int arr[], int first, int last)
+    {
+        int pivot = arr[last];
+        int j = first;
+
+        for(int i = first; i < last; i++)
+        {
+            if (arr[i] <= pivot)
+            {
+                swap(&arr[i], &arr[j]);
+                j++;
+            }
+        }
+
+        swap(&arr[j], &arr[last]);
+        return j;
+    }
+
+
+    void QuickSort(int arr[], int first, int last)
+    {
+        int pIndex;
+
+        if (first < last)
+        {
+            pIndex = Partition(arr, first, last);
+            QuickSort(arr, first, pIndex - 1);
+            QuickSort(arr, pIndex + 1, last);
+        }
+    }
+
+
+    void PrintSortedArray(int arr[], int n)
+    {
+        cout << "The sorted array is: [ ";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+
+    int main()
+    {
+        int arr[] = {8, 2, 1, 7, 3, 5, 4, 6};
+        int n = sizeof(arr) / sizeof(arr[0]);
+
+        cout << "The array elements are: [ ";
+
+        for (int i = 0; i < 7; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        int choice;
+        while(1)
+        {
+            cout << "----------------------------" << endl;
+            cout << "PROGRAM FOR ARRAY SORT" << endl;
+            cout << "----------------------------" << endl;
+            cout << "1. Bubble sort" << endl;
+            cout << "2. Insertion sort" << endl;
+            cout << "3. Selection sort" << endl;
+            cout << "4. Merge sort" << endl;
+            cout << "5. Quick sort" << endl;
+            cout << "6. Exit" << endl;
+            cout << endl;
+            cout << "Enter your choice: " << endl;
+
+            cin >> choice;
+
+            switch(choice)
+            {
+                case 1:
+                    Bubble(arr, n);
+                    PrintSortedArray(arr, n);
+                    break;
+
+                case 2:
+                    Insertion(arr, n);
+                    PrintSortedArray(arr, n);
+                    break;
+
+                case 3:
+                    Selection(arr, n);
+                    PrintSortedArray(arr, n);
+                    break;
+
+                case 4:
+                    MergeSort(arr, 0, n - 1);
+                    PrintSortedArray(arr, n);
+                    break;
+
+                case 5:
+                    QuickSort(arr, 0, n - 1);
+                    PrintSortedArray(arr, n);
+                    break;
+
+                case 6:
+                    exit(0);
+
+                default:
+                    cout << "Invalid choice" << endl;
+                    cout << endl;
+                    break;
+            }
+        }
+
+        return 0;
+    }
+
+
+--------- 8. SIMPLE BUBBLE SORT PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    void Bubble(int arr[], int n)
+    {
+        int i, j;
+        for (i = 0; i < n - 1; i++)
+        {
+            for (j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    int temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+    void PrintSortedArray(int arr[], int n)
+    {
+        cout << "The sorted array is: [ ";
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+    }
+
+    int main()
+    {
+        int i;
+        int arr[7] = {16, 24, 8, 60, 35, 44, 51};
+
+        int n = sizeof(arr) / sizeof(arr[0]);
+
+        cout << "The array elements are: [ ";
+
+        for (i = 0; i < n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        Bubble(arr, n);
+        PrintSortedArray(arr, n);
+
+        return 0;
+    }
+
+
+--------- 9. SIMPLE DELETE PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    int main()
+    {
+        int i, position;
+        int arr[7] = {16, 24, 8, 60, 35, 44, 51};
+
+        int n = sizeof(arr) / sizeof(arr[0]);
+
+        cout << "The array elements are: [ ";
+
+        for (i = 0; i < 7; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        cout << "Enter position : ";
+        cin >> position;
+
+        for (i = position; i < n; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+
+        cout << "The new array is: [ ";
+
+        for (i = 0; i < n - 1; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << "]" << endl;
+
+        return 0;
+    }
+
+
+================================================================================
+                       BINARY SEARCH TREE (BST)
+================================================================================
+
+
+--------- 1. BST NODE STRUCTURE ---------
+
+    struct Node
+    {
+        int data;
+        struct Node* left;
+        struct Node* right;
+    };
+
+
+--------- 2. BST CLASS DECLARATION ---------
+
+    class BinarySearchTree
+    {
+        private:
+            struct Node* root = NULL;
+
+            /* struct Node* is a structure pointer or pointer to a structure which
+               holds the address of any structure, like we have integer pointers */
+
+        public:
+
+            // Insert, Delete, Traversal functions here
+    };
+
+
+--------- 3. INSERT A NODE ---------
+
+    void insert(int element)
+    {
+        struct Node* temp;
+        struct Node* parent;
+        temp = new Node;
+        temp->data = element;
+        temp->left = NULL;
+        temp->right = NULL;
+        parent = root;
+
+        if(root == NULL)
+        {
+            root = temp;
+        }
+
+        else
+        {
+            struct Node* curr;
+            curr = root;
+            while(curr)
+            {
+                parent = curr;
+                if (temp->data > curr->data)
+                {
+                    curr = curr->right;
+                }
+
+                else
+                {
+                    curr = curr->left;
+                }
+            }
+
+            if (temp->data > parent->data)
+            {
+                parent->right = temp;
+            }
+
+            else
+            {
+                parent->left = temp;
+            }
+        }
+    }
+
+
+--------- 4. DELETE OPERATIONS ---------
+
+    4.1. Delete a Leaf Node
+    ----
+    // curr is the target node to be deleted, parent is its parent
+    if(curr == parent->right)  // if the node is connected to the right of the parent
+    {
+        parent->right = NULL;      // break the connection with parent
+    }
+    else                           // if the node is connected to the left of the parent
+    {
+        parent->left = NULL;
+    }
+    delete curr;
+
+
+    4.2. Delete a Node with 1 Child (Left Child, on Right of Parent)
+    ----
+    if (curr->left != NULL)
+    {
+        if (curr == parent->right)
+        {
+            parent->right = curr->left;
+        }
+    }
+    curr->left = NULL;
+    delete curr;
+
+
+    4.3. Delete a Node with 1 Child (Left Child, on Left of Parent)
+    ----
+    if (curr->left != NULL)
+    {
+        if (curr == parent->left)
+        {
+            parent->left = curr->left;
+        }
+    }
+    curr->left = NULL;
+    delete curr;
+
+
+    4.4. Delete a Node with 1 Child (Right Child, on Right of Parent)
+    ----
+    if (curr->right != NULL)
+    {
+        if(curr == parent->right)
+        {
+            parent->right = curr->right;
+        }
+    }
+    curr->right = NULL;
+    delete curr;
+
+
+    4.5. Delete a Node with 1 Child (Right Child, on Left of Parent)
+    ----
+    if (curr->right != NULL)
+    {
+        if(curr == parent->left)
+        {
+            parent->left = curr->right;
+        }
+    }
+    curr->right = NULL;
+    delete curr;
+
+
+    4.6. Delete a Node with 2 Children
+    ----
+    /* Deleted node replaced with either highest value in the left subtree
+       or the least value in the right subtree */
+
+    if (curr->left != NULL && curr->right != NULL)
+    {
+        struct Node* t1, *t2;
+        t1 = curr->right;
+
+        if (t1->left == NULL && t1->right == NULL)
+        {
+            curr->data = t1->data;
+            curr->right = NULL;
+            delete t1;
+        }
+    }
+
+
+    Alternative approach:
+
+    if (curr->left != NULL && curr->right != NULL)
+    {
+        struct Node* t1, *t2;
+        t1 = curr->right;
+
+        if (t1->right == NULL && t1->left == NULL)
+        {
+            curr->data = t1->data;
+            curr->right = t1->right;
+            t1->right = NULL;
+            delete t1;
+        }
+    }
+
+
+--------- 5. TREE TRAVERSAL ---------
+
+    5.1. Inorder Traversal (Left -> Root -> Right)
+    ----
+    void inorder(struct Node* t)
+    {
+        if (t->left)
+            inorder(t->left);
+        cout << t->data;
+        if (t->right)
+            inorder(t->right);
+    }
+
+
+    5.2. Preorder Traversal (Root -> Left -> Right)
+    ----
+    void preorder(struct Node* t)
+    {
+        if(t != NULL)
+        {
+            cout << t->data << " ";
+            preorder(t->left);
+            preorder(t->right);
+        }
+    }
+
+
+    5.3. Postorder Traversal (Left -> Right -> Root)
+    ----
+    void postorder(struct Node *t)
+    {
+        if(t != NULL)
+        {
+            postorder(t->left);
+            postorder(t->right);
+            cout << t->data << " ";
+        }
+    }
+
+
+--------- 6. COMPLETE BST PROGRAM ---------
+
+    #include<iostream>
+    using namespace std;
+
+    struct Node
+    {
+        int data;
+        struct Node* left;
+        struct Node* right;
+    };
+
+    class BinarySearchTree
+    {
+        private:
+            struct Node* root = NULL;
+
+        public:
+
+            void insert(int element)
+            {
+                struct Node* temp;
+                struct Node* parent;
+                temp = new Node;
+                temp->data = element;
+                temp->left = NULL;
+                temp->right = NULL;
+                parent = root;
+
+                if(root == NULL)
+                {
+                    root = temp;
+                }
+
+                else
+                {
+                    struct Node* curr;
+                    curr = root;
+                    while(curr)
+                    {
+                        parent = curr;
+                        if (temp->data > curr->data)
+                        {
+                            curr = curr->right;
+                        }
+
+                        else
+                        {
+                            curr = curr->left;
+                        }
+                    }
+
+                    if (temp->data > parent->data)
+                    {
+                        parent->right = temp;
+                    }
+
+                    else
+                    {
+                        parent->left = temp;
+                    }
+                }
+            }
+
+            void inorder(struct Node* t)
+            {
+                if (t->left)
+                    inorder(t->left);
+                cout << t->data;
+                if (t->right)
+                    inorder(t->right);
+            }
+
+            void preorder(struct Node* t)
+            {
+                if(t != NULL)
+                {
+                    cout << t->data << " ";
+                    preorder(t->left);
+                    preorder(t->right);
+                }
+            }
+
+            void postorder(struct Node *t)
+            {
+                if(t != NULL)
+                {
+                    postorder(t->left);
+                    postorder(t->right);
+                    cout << t->data << " ";
+                }
+            }
+    };
+
+    int main()
+    {
+        BinarySearchTree bst;
+
+        while(1)
+        {
+            int choice, element;
+
+            cout << "----------------------------------------------------" << endl;
+            cout << "    PROGRAM FOR BINARY SEARCH TREE IMPLEMENTATION    " << endl;
+            cout << "----------------------------------------------------" << endl;
+            cout << "1. Insert an element" << endl;
+            cout << "2. Delete an element" << endl;
+            cout << "3. Inorder tree traversal" << endl;
+            cout << "4. Preorder tree traversal" << endl;
+            cout << "5. Postorder tree traversal" << endl;
+            cout << "6. Display the BST" << endl;
+            cout << "7. Exit" << endl;
+            cout << endl;
+            cout << "Enter your choice: ";
+
+            cin >> choice;
+
+            switch(choice)
+            {
+                case 1:
+                    cout << "Enter the data : ";
+                    cin >> element;
+                    cout << endl;
+                    bst.insert(element);
+                    break;
+
+                case 2:
+                    break;
+
+                case 3:
+                    cout << "Inorder tree traversal display is : ";
+                    bst.inorder(root);
+                    cout << endl;
+                    break;
+
+                case 4:
+                    cout << "Preorder tree traversal display is : ";
+                    bst.preorder(root);
+                    cout << endl;
+                    break;
+
+                case 5:
+                    cout << "Postorder tree traversal display is : ";
+                    bst.postorder(root);
+                    cout << endl;
+                    break;
+
+                case 6:
+                    break;
+
+                case 7:
+                    exit(0);
+
+                default:
+                    cout << "Enter a valid choice!!!" << endl;
+                    cout << endl;
+            }
+        }
+
+        return 0;
+    }
+
+
+================================================================================
+                       SINGLY LINKED LIST
+================================================================================
+
+--------- 1. NODE STRUCTURE ---------
+
+    struct node
+    {
+        int data;
+        struct node* link;
+    };
+
+
+--------- 2. CLASS DECLARATION ---------
+
+    class List
+    {
+        private:
+            struct node* root;    // global variable
+
+        public:
+
+            List()
+            {
+                root = NULL;
+            }
+
+            // All methods listed below
+    };
+
+
+--------- 3. INSERT OPERATIONS ---------
+
+    3.1. Insert at Beginning
+    ----
+    bool insertAtBeg(int element)
+    {
+        struct node *temp;
+        temp = new node;
+        temp->data = element;
+        temp->link = NULL;
+
+        if (root == NULL)
+        {
+            root = temp;
+        }
+        else
+        {
+            temp->link = root;     // [right connection]
+            root = temp;           // [left connection]
+        }
+
+        return true;
+    }
+
+
+    3.2. Insert at End (Append)
+    ----
+    bool insertAtEnd(int element)
+    {
+        struct node* temp;
+        temp = new node;
+        temp->data = element;
+        temp->link = NULL;
+
+        if (root == NULL)           // list is empty
+        {
+            root = temp;
+        }
+        else
+        {
+            struct node* p;
+            p = root;
+
+            while (p->link != NULL)
+            {
+                p = p->link;
+            }
+
+            p->link = temp;
+        }
+
+        return true;
+    }
+
+
+    3.3. Insert at Position
+    ----
+    bool insertAtPos(int element, int position)
+    {
+        struct node* temp;
+        temp = new node;
+        temp->data = element;
+        temp->link = NULL;
+
+        struct node* p;
+        int i = 1;
+        int len = length();
+
+        if (position > len)
+        {
+            cout << "Invalid location" << endl;
+            cout << "Currently the list is having " << len << " nodes" << endl;
+            return false;
+        }
+        else if (position == 1)
+        {
+            insertAtBeg(element);
+            return true;
+        }
+        else
+        {
+            p = root;
+
+            while (i < position - 1)
+            {
+                p = p->link;
+                i++;
+            }
+
+            temp->link = p->link;   // [right connection first]
+            p->link = temp;         // [left connection]
+        }
+
+        return true;
+    }
+
+
+--------- 4. DELETE OPERATIONS ---------
+
+    4.1. Delete from Beginning
+    ----
+    int deleteFromBeg()
+    {
+        struct node* temp;
+        temp = root;
+        root = temp->link;
+        int result = temp->data;
+        delete temp;
+        temp->link = NULL;
+        return result;
+    }
+
+
+    4.2. Delete from End
+    ----
+    int deleteFromEnd()
+    {
+        struct node* p, *q;
+        p = root;
+
+        while (p->link != NULL)
+        {
+            q = p;
+            p = p->link;
+        }
+
+        int result = p->data;
+        q->link = NULL;
+        delete p;
+        return result;
+    }
+
+
+    4.3. Delete from Position
+    ----
+    void deleteFromPos(int position)
+    {
+        struct node* temp;
+        int len = length();
+        int res;
+
+        if (position > length())
+        {
+            cout << "Invalid location" << endl;
+            cout << "Currently the list is having " << len << " nodes" << endl;
+        }
+        else if (position == 1)
+        {
+            res = deleteFromBeg();
+            cout << "Item " << res << " deleted" << endl;
+        }
+        else if (position == len)
+        {
+            res = deleteFromEnd();
+            cout << "Item " << res << " deleted" << endl;
+        }
+        else
+        {
+            struct node* p = root, *q;
+            int i = 1;
+
+            while (i < position - 1)
+            {
+                p = p->link;
+                i++;
+            }
+
+            q = p->link;
+            p->link = q->link;
+            q->link = NULL;
+            int result = q->data;
+            delete q;
+            cout << "Item " << result << " deleted" << endl;
+        }
+    }
+
+
+--------- 5. UTILITY OPERATIONS ---------
+
+    5.1. Find List Length
+    ----
+    int length()
+    {
+        int count = 0;
+        struct node* temp;
+        temp = root;
+
+        while (temp != NULL)
+        {
+            count++;
+            temp = temp->link;
+        }
+
+        return count;
+    }
+
+
+    5.2. Swap Two Nodes
+    ----
+    void swap(int position)
+    {
+        struct node* p, *q, *r;
+        int i = 1;
+        p = root;
+
+        while (i < position - 1)
+        {
+            p = p->link;
+            i++;
+        }
+
+        q = p->link;
+        r = q->link;
+
+        q->link = r->link;
+        r->link = q;
+        p->link = r;
+
+        display();
+    }
+
+
+    5.3. Sort the List
+    ----
+    void sort()
+    {
+        cout << "This function is Currently Unavailable.....!!!" << endl;
+    }
+
+
+    5.4. Search Element
+    ----
+    int search(int element)
+    {
+        cout << "This function is Currently Unavailable.....!!!" << endl;
+        return 0;
+    }
+
+
+    5.5. Display List
+    ----
+    void display()
+    {
+        struct node* temp;
+        temp = root;
+
+        if (temp == NULL)
+        {
+            cout << "List is empty" << endl;
+        }
+        else
+        {
+            cout << "Displaying all the elements" << endl;
+
+            while (temp != NULL)
+            {
+                cout << temp->data << "->";
+                temp = temp->link;
+            }
+            cout << endl;
+        }
+    }
+
+
+    5.6. Reverse the List
+    ----
+    void reverse()
+    {
+        int i, j, k, len;
+        int temp;
+        struct node *p, *q;
+        len = length();
+
+        i = 0;
+        j = len - 1;
+        p = q = root;
+
+        while (i < j)
+        {
+            k = 0;
+            while (k < j)
+            {
+                q = q->link;
+                k++;
+            }
+
+            temp = p->data;
+            p->data = q->data;
+            q->data = temp;
+
+            i++;
+            j--;
+
+            p = p->link;
+            q = root;
+        }
+
+        display();
+    }
+
+
+--------- 6. COMPLETE SLL PROGRAM ---------
+
+    (Complete program with main() is shown in the original file)
+
+
+================================================================================
+                       STACK - ARRAY BASED
+================================================================================
+
+--------- 1. STRUCTURE AND DEFINES ---------
+
+    #define SIZE 10
+    #define INIT -1
+
+    class Stack
+    {
+        private:
+            int arr[SIZE];
+            int top;
+
+        public:
+            Stack()
+            {
+                top = INIT;
+            }
+
+            // All methods listed below
+    };
+
+
+--------- 2. PUSH OPERATION ---------
+
+    bool push(int element)
+    {
+        if (isFull())
+        {
+            cout << "Stack is full. Cannot push element" << endl;
+            return false;
+        }
+        else
+        {
+            top++;
+            arr[top] = element;
+            return true;
+        }
+    }
+
+
+--------- 3. POP OPERATION ---------
+
+    int pop()
+    {
+        int temp;
+        if (isEmpty())
+        {
+            cout << "Stack is empty. " << endl;
+            return false;
+        }
+        else
+        {
+            temp = arr[top];
+            top--;
+            return temp;
+        }
+    }
+
+
+--------- 4. PEEK OPERATION ---------
+
+    int peek()
+    {
+        int temp;
+
+        if (isEmpty())
+        {
+            cout << "Stack is Empty." << endl;
+            return false;
+        }
+        else
+        {
+            temp = arr[top];
+        }
+
+        return temp;
+    }
+
+
+--------- 5. UTILITY OPERATIONS ---------
+
+    5.1. Is Empty Check
+    ----
+    bool isEmpty()
+    {
+        return (top == -1);
+    }
+
+
+    5.2. Is Full Check
+    ----
+    bool isFull()
+    {
+        return (top == SIZE - 1);
+    }
+
+
+    5.3. Count Elements
+    ----
+    int count()
+    {
+        return top + 1;
+    }
+
+
+    5.4. Display Stack
+    ----
+    void display()
+    {
+        for (int i = top; i >= 0; i--)
+        {
+            cout << arr[i] << endl;
+        }
+    }
+
+
+================================================================================
+                    STACK - LINKED LIST BASED
+================================================================================
+
+--------- 1. STRUCTURE AND CLASS DECLARATION ---------
+
+    struct node
+    {
+        int data;
+        struct node* link;     // pointer variable of node type
+    };
+
+    class Stack
+    {
+        private:
+            struct node* top;      // global variable
+
+        public:
+            Stack()
+            {
+                top = NULL;
+            }
+
+            // All methods listed below
+    };
+
+
+--------- 2. PUSH OPERATION ---------
+
+    bool push(int element)
+    {
+        struct node* temp;
+        temp = new node;
+        temp->data = element;
+        temp->link = top;
+        top = temp;
+        return true;
+    }
+
+
+--------- 3. POP OPERATION ---------
+
+    int pop()
+    {
+        int res;
+        struct node* temp;
+        if (top == NULL)
+        {
+            cout << "Stack is empty." << endl;
+        }
+        else
+        {
+            temp = top;
+            top = top->link;
+            temp->link = NULL;
+            res = temp->data;
+            delete temp;
+            return res;
+        }
+    }
+
+
+--------- 4. PEEK OPERATION ---------
+
+    int peek()
+    {
+        struct node* temp;
+        if (top == NULL)
+        {
+            cout << "Stack is empty." << endl;
+        }
+        else
+        {
+            temp = top;
+            cout << temp->data << " is the top element" << endl;
+            return temp->data;
+        }
+    }
+
+
+--------- 5. UTILITY OPERATIONS ---------
+
+    5.1. Is Empty Check
+    ----
+    bool isEmpty()
+    {
+        return (top == NULL);
+    }
+
+
+    5.2. Is Full Check
+    ----
+    bool isFull()
+    {
+        int length = count();
+        // Dynamic allocation, so never full
+        return false;
+    }
+
+
+    5.3. Count Elements
+    ----
+    int count()
+    {
+        int numberOfElements = 0;
+        struct node* temp;
+        temp = top;
+
+        while (temp != NULL)
+        {
+            numberOfElements++;
+            temp = temp->link;
+        }
+        return numberOfElements;
+    }
+
+
+    5.4. Display Stack
+    ----
+    void display()
+    {
+        struct node* temp;
+        if (top == NULL)
+        {
+            cout << "Stack is empty." << endl;
+        }
+        else
+        {
+            temp = top;
+            while (temp != NULL)
+            {
+                cout << temp->data << endl;
+                temp = temp->link;
+            }
+        }
+    }
+
+
+================================================================================
+                       QUEUE - ARRAY BASED
+================================================================================
+
+--------- 1. STRUCTURE AND DEFINES ---------
+
+    #define CAPACITY 5
+
+    class Queue
+    {
+        private:
+            int queue[CAPACITY];   // Integer array named queue of size CAPACITY
+            int front = 0;
+            int rear = 0;          // front and rear point at starting position initially
+
+        public:
+            // All methods listed below
+    };
+
+
+--------- 2. ENQUEUE OPERATION ---------
+
+    bool enqueue(int element)    // add element to the queue
+    {
+        if (CAPACITY == rear)
+        {
+            cout << "Queue is full. " << endl;
+            return false;
+        }
+        else
+        {
+            queue[rear] = element;
+            rear++;
+            return true;
+        }
+    }
+
+
+--------- 3. DEQUEUE OPERATION ---------
+
+    void dequeue()               // delete element from the queue
+    {
+        if (front == rear)
+        {
+            cout << "Queue is already empty. " << endl;
+        }
+        else
+        {
+            cout << "Element " << queue[front] << " deleted successfully from queue." << endl;
+            for (int i = 0; i < rear - 1; i++)
+            {
+                queue[i] = queue[i + 1];
+            }
+            rear--;
+        }
+    }
+
+
+--------- 4. UTILITY OPERATIONS ---------
+
+    4.1. Display Queue
+    ----
+    void display()
+    {
+        if (front == rear)
+            cout << "Queue is empty. " << endl;
+        else
+        {
+            cout << "Queue elements are : ";
+            for (int i = front; i < rear; i++)
+            {
+                cout << queue[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+
+
+    4.2. Is Empty Check
+    ----
+    bool isEmpty()
+    {
+        if (front == rear)
+            return true;
+        else
+            return false;
+    }
+
+
+    4.3. Is Full Check
+    ----
+    bool isFull()
+    {
+        if (rear == CAPACITY)
+            return true;
+        else
+            return false;
+    }
+
+
+    4.4. Get Front Element
+    ----
+    int frontelement()
+    {
+        return queue[front];
+    }
+
+
+    4.5. Get Back Element
+    ----
+    int backelement()
+    {
+        return queue[rear - 1];
+    }
+
+
+================================================================================
+                       SUMMARY OF ALL OPERATIONS
+================================================================================
+
+ARRAY OPERATIONS (20 operations):
+    1. Bubble sort
+    2. Insertion sort
+    3. Selection sort
+    4. Merge sort
+    5. Quick sort
+    6. Linear search (iterative)
+    7. Linear search (recursive)
+    8. Binary search (iterative)
+    9. Binary search (recursive)
+    10. Insert element at position
+    11. Delete element at position
+    12. Find minimum element
+    13. Find maximum element
+    14. Reverse display array
+    15. Reverse array elements
+    16. Calculate average of elements
+    17. Find duplicates in array
+    18. Count number of elements
+    19. Swap array elements
+    20. Merge two arrays
+
+
+BINARY SEARCH TREE OPERATIONS (10 operations):
+    1. Insert a node
+    2. Delete leaf node
+    3. Delete node with 1 child (left)
+    4. Delete node with 1 child (right)
+    5. Delete node with 2 children
+    6. Inorder traversal (Left -> Root -> Right)
+    7. Preorder traversal (Root -> Left -> Right)
+    8. Postorder traversal (Left -> Right -> Root)
+    9. Search for element
+    10. Display BST
+
+
+SINGLY LINKED LIST OPERATIONS (13 operations):
+    1. Insert at beginning
+    2. Insert at end (append)
+    3. Insert at specific position
+    4. Delete from beginning
+    5. Delete from end
+    6. Delete from specific position
+    7. Find list length
+    8. Swap two nodes
+    9. Sort the list
+    10. Search an element
+    11. Display list
+    12. Reverse the list
+    13. Merge two lists
+
+
+STACK - ARRAY BASED OPERATIONS (7 operations):
+    1. Push element
+    2. Pop element
+    3. Peek top element
+    4. Check if empty
+    5. Check if full
+    6. Count elements
+    7. Display stack
+
+
+STACK - LINKED LIST BASED OPERATIONS (7 operations):
+    1. Push element
+    2. Pop element
+    3. Peek top element
+    4. Check if empty
+    5. Check if full (never true in LL)
+    6. Count elements
+    7. Display stack
+
+
+QUEUE - ARRAY BASED OPERATIONS (7 operations):
+    1. Enqueue (add) element
+    2. Dequeue (remove) element
+    3. Display queue
+    4. Check if empty
+    5. Check if full
+    6. Get front element
+    7. Get back element
+
+
+STRING OPERATIONS (8 operations):
+    1. Search a word
+    2. Search multiple occurrences of word
+    3. String reversal
+    4. String slicing
+    5. Case conversion (lower to upper, upper to lower)
+    6. Validation (no special characters, etc.)
+    7. Palindrome check
+    8. Regex-based operations
+
+
+MISCELLANEOUS OPERATIONS (2 operations):
+    1. Calculate factorial
+    2. Calculate permutations and combinations
+
+
+================================================================================
+
