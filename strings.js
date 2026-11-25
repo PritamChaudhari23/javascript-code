@@ -474,39 +474,3 @@ console.log(longestSubstringBetweenChars("hello [world] here", "[", "]"));
 // 51.Print all the alphabets using forEach
 const alphabets = "abcdefghijklmnopqrstuvwxyz";
 [...alphabets].forEach((letter) => console.log(letter));
-
-// --------------------------------------------------------------------------------------------------------
-// STRING METHODS SUMMARY:
-// split(): Splits a string into an array.
-// join(): Joins array elements into a string.
-// reverse(): Reverses the order of elements in an array (used in conjunction with split() and join()
-// toLowerCase(): Converts string to lowercase.
-// toUpperCase(): Converts string to uppercase.
-// substring(): Extracts part of a string.
-// slice(): Extracts a section of a string.
-// includes(): Checks if a substring exists.
-// indexOf(): Finds the first occurrence index.
-// lastIndexOf(): Finds the last occurrence index.
-// startsWith(): Checks prefix.
-// endsWith(): Checks suffix.
-// replace(): Replaces part of a string.
-// match(): Matches string against a regex.
-// trim(): Removes whitespace from both ends.
-// repeat(): Repeats a string n times.
-// charAt(): Returns character at a given index.
-// localeCompare(): Compares strings lexicographically.
-// String.fromCharCode(): Converts ASCII code to character.
-
-// REGEX SUMMARY:
-// /\s+/g: Matches one or more whitespace characters.
-// /\d/g: Matches numeric digits.
-// /^\d+$/: Checks if a string contains only digits.
-// /[aeiouAEIOU]/g: Matches all vowels.
-// /\b\w/g: Matches first character of each word.
-// /[^\w]/g: Removes punctuation and special characters.
-// /[^a-zA-Z0-9\s]/g: Removes special characters.
-// /the/g: Finds all occurrences of a word.
-// /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/: Email validation.
-// /\d/: Checks if string contains at least one digit.
-
-// --------------------------------------------------------------------------------------------------------

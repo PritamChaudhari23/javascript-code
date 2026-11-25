@@ -166,7 +166,7 @@ function findCommonElements(...arrays) {
   // Find the first array (used to check the rest of the arrays)
   return arrays[0].filter((item) =>
     // Check if the item exists in every other array
-    arrays.every((arr) => arr.includes(item))
+    arrays.every((arr) => arr.includes(item)),
   );
 }
 
@@ -249,7 +249,7 @@ console.log(array23.lastIndexOf(2));
 // 24.Write a function to find all unique elements in an array.
 const array24 = [1, 2, 2, 3, 4, 4, 5];
 const uniqueElements = array24.filter(
-  (item) => array24.indexOf(item) === array24.lastIndexOf(item)
+  (item) => array24.indexOf(item) === array24.lastIndexOf(item),
 );
 console.log(uniqueElements);
 
@@ -336,7 +336,7 @@ function calculateAverage(arr) {
 
   const sum = arr.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
-    0
+    0,
   );
   return sum / arr.length;
 }
@@ -577,39 +577,3 @@ function shiftArray(arr) {
 
 const array50 = [1, 2, 3, 4, 5];
 console.log(shiftArray(array50));
-
-// --------------------------------------------------------------------------------------------------------
-// ARRAY METHODS SUMMARY:
-// pop(): Removes last element
-// push(): Adds last element
-// shift(): Removes first element
-// unshift(): Adds first element
-// splice(index, number of items): Remove given number of items starting from given index
-// slice(start,end): Returns copy of a section of array
-// map(): Creates a new array by transforming each element.
-// filter(): Creates a new array with elements that pass a condition.
-// sort(): Sorts elements of an array (lexicographically by default).
-// concat(): Merges two or more arrays into a new array.
-// reverse(): Reverses the order of elements in an array in place.
-// reduce(): Reduces an array to a single value.
-// forEach(): Iterates over each element without returning a new array.
-// find(): Returns the first element that satisfies a condition.
-// findIndex(): Returns the index of the first matching element.
-// some(): Checks if at least one element satisfies a condition.
-// every(): Checks if all elements satisfy a condition.
-// includes(): Checks if an array contains a specific value.
-// indexOf(): Returns the first index of a value.
-// lastIndexOf(): Returns the last index of a value.
-// flat(): Flattens nested arrays (default depth = 1).
-// join(): Converts an array into a string using a separator.
-// Array.isArray(): Checks if a value is an array.
-// Spread operator (...): Expands array elements.
-// Set: Used to remove duplicate values.
-// Map: Used for unique objects based on a key.
-
-// --------------------------------------------------------------------------------------------------------
-// both are same
-// for (i = 0; i < array.length; i++) {}
-// for (i = 0; i <= array.length - 1; i++) {}
-
-// --------------------------------------------------------------------------------------------------------

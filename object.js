@@ -207,7 +207,7 @@ const object17 = {
 };
 
 const values = Object.values(object17).filter(
-  (value) => typeof value === "number" && value > 30
+  (value) => typeof value === "number" && value > 30,
 );
 
 console.log(values);
@@ -231,7 +231,7 @@ const object19 = { name: "John", age: 30, city: "New York" };
 
 const queryString = Object.keys(object19)
   .map(
-    (key) => `${encodeURIComponent(key)}=${encodeURIComponent(object19[key])}`
+    (key) => `${encodeURIComponent(key)}=${encodeURIComponent(object19[key])}`,
   )
   .join("&");
 
@@ -241,7 +241,7 @@ console.log(queryString);
 // 20.How to swap the keys and values of an object.
 const object20 = { a: 1, b: 2, c: 3 };
 const swappedObj = Object.fromEntries(
-  Object.entries(object20).map(([key, value]) => [value, key])
+  Object.entries(object20).map(([key, value]) => [value, key]),
 );
 console.log(swappedObj);
 
@@ -257,7 +257,7 @@ console.log(JSON.stringify(object22));
 // 23.How would you find the property with the highest value in an object?
 const object23 = { a: 10, b: 50, c: 30 };
 const maxKey = Object.keys(object23).reduce((a, b) =>
-  object23[a] > object23[b] ? a : b
+  object23[a] > object23[b] ? a : b,
 );
 console.log(maxKey);
 
@@ -270,7 +270,7 @@ const obj24 = {
 };
 
 const nestedObjects = Object.entries(obj24).filter(
-  ([key, value]) => typeof value === "object" && value !== null
+  ([key, value]) => typeof value === "object" && value !== null,
 );
 
 console.log(nestedObjects);
@@ -343,7 +343,7 @@ console.log(deepEqual(obj1, obj2)); // true
 const obj30 = { a: 1, b: 0, c: null, d: "hello" };
 
 const cleanedObj = Object.fromEntries(
-  Object.entries(obj30).filter(([key, value]) => value)
+  Object.entries(obj30).filter(([key, value]) => value),
 );
 console.log(cleanedObj);
 
@@ -480,7 +480,7 @@ console.log(uniqueValues);
 // 43.Write a program to check if all properties of an object are strings.
 const obj43 = { name: "Alice", city: "New York", country: "USA" };
 const allStrings = Object.values(obj43).every(
-  (value) => typeof value === "string"
+  (value) => typeof value === "string",
 );
 console.log(allStrings);
 
@@ -568,27 +568,3 @@ const obj50 = {};
 obj50.circular = obj50;
 
 console.log(hasCircularReference(obj50));
-
-// --------------------------------------------------------------------------------------------------------
-// OBJECT METHODS SUMMARY:
-// Object.keys(): Returns an array of an object’s keys.
-// Object.values(): Returns an array of an object’s values.
-// Object.entries(): Returns key–value pairs as an array.
-// Object.assign(): Copies properties from source objects to a target.
-// Object.fromEntries(): Converts key–value pairs back into an object.
-// Object.freeze(): Prevents modification of an object.
-// Object.getOwnPropertyNames(): Returns all own property names.
-// Object.getOwnPropertyDescriptor(): Gets property metadata.
-// Object.setPrototypeOf(): Sets an object’s prototype.
-// hasOwnProperty(): Checks if a property exists directly on an object.
-// in operator: Checks if a key exists (including prototype chain).
-// delete: Removes a property from an object.
-// Destructuring: Extracts properties into variables.
-// Spread operator (...): Shallow clones or merges objects.
-// JSON.stringify(): Converts an object to JSON string.
-// JSON.parse(): Converts JSON string back to an object.
-// for...in: Iterates over enumerable object keys.
-// Recursion: Used for deep clone, deep equality, flattening.
-// Object.create(): Creates an object with a specified prototype.
-
-// --------------------------------------------------------------------------------------------------------

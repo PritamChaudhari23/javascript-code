@@ -1,8 +1,9 @@
 // 1. Get the Current Date (MM/DD/YYYY format)
 const getCurrentDate = () => {
   const currentDate = new Date();
-  return `${currentDate.getMonth() + 1
-    }/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+  return `${
+    currentDate.getMonth() + 1
+  }/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 };
 console.log("1. Current Date (MM/DD/YYYY):", getCurrentDate());
 
@@ -31,7 +32,7 @@ const today = new Date();
 const futureDate = new Date("2025-01-01");
 console.log(
   "4. Difference in Days between today and 01/01/2025:",
-  dateDifference(today, futureDate)
+  dateDifference(today, futureDate),
 );
 
 // --------------------------------------------------------------------------------
@@ -84,7 +85,7 @@ const timeRemaining = (futureDate) => {
 const futureDateForTime = new Date("2025-01-01");
 console.log(
   "9. Time Remaining until 01/01/2025:",
-  timeRemaining(futureDateForTime)
+  timeRemaining(futureDateForTime),
 );
 
 // --------------------------------------------------------------------------------
@@ -95,55 +96,5 @@ const setTimeToMidnight = (date) => {
 };
 console.log(
   "10. Date with Time Set to Midnight:",
-  setTimeToMidnight(new Date())
+  setTimeToMidnight(new Date()),
 );
-
-// --------------------------------------------------------------------------------------------------------
-// DATE METHODS SUMMARY:
-// new Date(): Creates a new Date object representing current date and time.
-// new Date(year, month, day): Creates a Date with specified year, month (0-11), and day.
-// new Date(dateString): Creates a Date from a date string (e.g., "2025-01-01").
-// new Date(milliseconds): Creates a Date from milliseconds since epoch.
-// getFullYear(): Returns the year (4-digit format).
-// getMonth(): Returns the month (0-11, where 0 is January).
-// getDate(): Returns the day of the month (1-31).
-// getDay(): Returns the day of the week (0-6, where 0 is Sunday).
-// getHours(): Returns the hour (0-23).
-// getMinutes(): Returns the minutes (0-59).
-// getSeconds(): Returns the seconds (0-59).
-// getMilliseconds(): Returns the milliseconds (0-999).
-// getTime(): Returns milliseconds since January 1, 1970 (Unix epoch).
-// setFullYear(year): Sets the year of the Date.
-// setMonth(month): Sets the month (0-11).
-// setDate(day): Sets the day of the month (1-31).
-// setHours(hours, minutes, seconds, milliseconds): Sets the time.
-// setMinutes(minutes): Sets the minutes.
-// setSeconds(seconds): Sets the seconds.
-// setMilliseconds(milliseconds): Sets the milliseconds.
-// setTime(milliseconds): Sets the Date using milliseconds since epoch.
-// toLocaleDateString(): Returns date as a localized string (e.g., "1/15/2026").
-// toLocaleTimeString(): Returns time as a localized string (e.g., "2:30:45 PM").
-// toLocaleString(): Returns both date and time as a localized string.
-// toString(): Returns a string representation of the Date object.
-// toISOString(): Returns date in ISO 8601 format (e.g., "2026-01-15T14:30:45.000Z").
-// toDateString(): Returns the date portion as a string (e.g., "Thu Jan 15 2026").
-// toTimeString(): Returns the time portion as a string.
-// toUTCString(): Returns the date in UTC format (GMT).
-// getUTCFullYear(), getUTCMonth(), getUTCDate(): UTC versions of getters.
-// setUTCFullYear(), setUTCMonth(), setUTCDate(): UTC versions of setters.
-// getTimezoneOffset(): Returns the timezone offset in minutes from UTC.
-// Date.now(): Returns current timestamp in milliseconds since epoch.
-// Date.parse(dateString): Parses a date string and returns milliseconds.
-
-// --------------------------------------------------------------------------------------------------------
-// COMMON DATE OPERATIONS:
-// Get current date: new Date()
-// Get specific date: new Date(year, month-1, day)
-// Add days: date.setDate(date.getDate() + n)
-// Subtract days: date.setDate(date.getDate() - n)
-// Get day difference: Math.floor((date2 - date1) / (1000 * 60 * 60 * 24))
-// Check leap year: (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
-// Format YYYY-MM-DD: date.toISOString().split('T')[0]
-// Last day of month: new Date(year, month, 0).getDate()
-
-// --------------------------------------------------------------------------------------------------------
