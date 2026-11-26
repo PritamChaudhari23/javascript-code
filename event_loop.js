@@ -40,3 +40,69 @@ console.log("9");
 // Output order: 1, 7, 9, 3, 6, 8, 5, 2, 4
 
 //----------------------------------------------------------------------------------------
+console.log("1. Start");
+
+async function fetchData() {
+  console.log("2. Inside async function");
+  await Promise.resolve();
+  console.log("4. After await");
+}
+
+fetchData();
+
+console.log("3. End");
+
+Promise.resolve().then(() => {
+  console.log("5. Another microtask");
+});
+
+console.log("6. Finished");
+
+// Output order: 1. Start, 2. Inside async function, 3. End, 6. Finished, 4. After await, 5. Another microtask
+
+//----------------------------------------------------------------------------------------
+console.log("Start");
+
+async function first() {
+  console.log("First started");
+  await second();
+  console.log("First completed");
+}
+
+async function second() {
+  console.log("Second started");
+  await Promise.resolve();
+  console.log("Second completed");
+}
+
+first();
+console.log("End");
+
+// Output order: Start, First started, Second started, End, Second completed, First completed
+
+//----------------------------------------------------------------------------------------
+// CALL STACK:
+console.log("Global start");
+
+function first() {
+  console.log("First start");
+  second();
+  console.log("First end");
+}
+
+function second() {
+  console.log("Second start");
+  third();
+  console.log("Second end");
+}
+
+function third() {
+  console.log("Third");
+}
+
+first();
+
+console.log("Global end");
+
+// Output order: Global start, First start, Second start, Third, Second end, First end, Global end
+//----------------------------------------------------------------------------------------
