@@ -8,4 +8,13 @@ export class Account {
   getSummary() {
     return `${this.id}: ${this.balance}`;
   }
+
+  deposit(amount) {
+    this.balance += amount;
+  }
+
+  withdraw(amount) {
+    if (amount > this.balance) throw new Error("Insufficient funds");
+    this.balance -= amount;
+  }
 }

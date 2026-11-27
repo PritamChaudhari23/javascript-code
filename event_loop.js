@@ -106,3 +106,47 @@ console.log("Global end");
 
 // Output order: Global start, First start, Second start, Third, Second end, First end, Global end
 //----------------------------------------------------------------------------------------
+
+console.log("A");
+
+setTimeout(() => console.log("B"), 0);
+
+Promise.resolve().then(() => {
+  console.log("C");
+  queueMicrotask(() => console.log("D"));
+});
+
+async function execute() {
+  console.log("E");
+  await Promise.resolve();
+  console.log("F");
+}
+execute();
+
+console.log("G");
+
+// Output order: A, E, G, C, F, D, B
+//----------------------------------------------------------------------------------------
+
+(function () {
+  console.log(1);
+
+  Promise.resolve(5).then((e) => {
+    setTimeout(() => console.log(2), 1000);
+  });
+
+  Promise.resolve(5).then((e) => {
+    setTimeout(() => console.log(3), 0);
+  });
+
+  Promise.resolve(5).then((e) => {
+    console.log(e);
+  });
+
+  setTimeout(() => {
+    console.log(4);
+  }, 0);
+})();
+
+// Output order: 1, 5, 4, 3, 2
+//----------------------------------------------------------------------------------------
